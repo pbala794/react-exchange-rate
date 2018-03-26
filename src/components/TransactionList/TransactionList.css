@@ -1,0 +1,16 @@
+.transaction-list {
+    margin-top: 50px;
+    list-style-type: none;
+}
+
+.transaction-list li {
+    padding: 10px 5px;
+    border: 2px solid #5f5555;
+    transition: background .2s ease-out;
+}
+
+.transaction-list li:hover {
+    background: #ada6a6;
+    cursor: pointer;
+    color: #fefefe;
+}

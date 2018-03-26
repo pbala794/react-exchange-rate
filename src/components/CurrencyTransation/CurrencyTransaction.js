@@ -18,7 +18,7 @@ class CurrencyTransaction extends Component {
                <form>
                     <label for="name">Nazwa transakcji</label>
                     <input type="text" id="name" />
-                    <label for="amoun">Kwota</label>
+                    <label for="amoun">Kwota (EUR)</label>
                     <input type="text" id="amount" />
                </form>
            </div>

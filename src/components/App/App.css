@@ -9,6 +9,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Robot', sans-serif;
+    color: #5f5555;
 }
 
 .app-container {
@@ -17,5 +18,6 @@ body {
     margin: 0 auto;
     padding: 30px 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
