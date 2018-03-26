@@ -14,3 +14,15 @@
     cursor: pointer;
     color: #fefefe;
 }
+
+.top-transaction-wrapper {
+    margin: 25px 0;
+    border-top: 2px dashed #333;
+    border-bottom: 2px dashed #333;
+    padding: 15px 0;  
+    line-height: 25px;
+}
+
+h3 {
+    margin-top: 35px;
+}
