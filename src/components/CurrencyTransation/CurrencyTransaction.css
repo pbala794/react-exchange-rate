@@ -1,0 +1,67 @@
+h2 {
+    letter-spacing: 2px;
+}
+
+.eur-input {
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    margin-top: 50px;
+}
+
+.eur-input input {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #333;
+    padding: 3px;
+    margin-left: 15px;
+    font-size: 1.2em;
+    max-width: 180px;
+}
+
+.eur-input input::placeholder {
+    letter-spacing: 1px;
+}
+
+.eur-input input:focus ~ img {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    color: blue;
+}
+
+.transaction-content {
+    margin-top: 50px;
+}
+
+.transaction-content form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.transaction-content label {
+    margin: 15px 0;
+}
+
+.transaction-content input {
+    padding-bottom: 3px;
+    border: none;
+    border-bottom: 2px solid #333;
+    padding: 0 3px 5px;
+}
+
+/* media queries */
+
+@media (max-width: 768px) {
+    .eur-input input {
+        max-width: 150px;
+        font-size: 0.9em;
+    }
+    
+    .eur-input input::placeholder {
+        letter-spacing: normal;
+    }
+}
