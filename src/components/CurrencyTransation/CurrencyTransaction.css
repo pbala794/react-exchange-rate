@@ -43,7 +43,7 @@ h2 {
 }
 
 .transaction-content label {
-    margin: 15px 0;
+    margin: 15px 0 0;
 }
 
 .transaction-content input {
@@ -51,6 +51,45 @@ h2 {
     border: none;
     border-bottom: 2px solid #333;
     padding: 0 3px 5px;
+    /*width: 50px;*/
+}
+
+.exchange-box {
+    display: flex;
+    margin-top: 25px;
+    /*justify-content: space-between;*/
+}
+
+.exchange-box div {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.exchange-box label {
+    /*border: 1px solid #333;*/
+    height: 100%;
+    margin-top: 0;
+    line-height: 50px;
+    padding-right: 10px;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+}
+
+.exchange-box input {
+    width: 50px;
+}
+
+.exchange-box input:focus ~ label,
+.exchange-box input:focus ~ valid {
+    font-size: 12px;
+    top: -25px;
+} 
+
+.exchange-box img {
+    width: 50px;
+    margin: 0 15px;
 }
 
 /* media queries */
