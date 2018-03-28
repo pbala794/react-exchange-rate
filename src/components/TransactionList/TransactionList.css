@@ -5,20 +5,20 @@
 
 .transaction-list li {
     padding: 10px 5px;
-    border: 2px solid #5f5555;
+    border: 2px solid #457b9d;
     transition: background .2s ease-out;
 }
 
 .transaction-list li:hover {
-    background: #ada6a6;
+    background: #457b9d;
     cursor: pointer;
     color: #fefefe;
 }
 
 .top-transaction-wrapper {
     margin: 25px 0;
-    border-top: 2px dashed #333;
-    border-bottom: 2px dashed #333;
+    border-top: 2px dashed #457b9d;
+    border-bottom: 2px dashed #457b9d;
     padding: 15px 0;  
     line-height: 25px;
 }

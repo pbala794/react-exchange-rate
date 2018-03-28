@@ -11,24 +11,39 @@ class App extends Component {
       super(props);
       
       this.state = {
-        currencyRate: 0
+        currencyRate: 0,
+        currencyAmount: 0
       };
       this.handleEurRateInput = this.handleEurRateInput.bind(this);
+      this.handleConvert = this.handleConvert.bind(this);
+      this.convertToPLN = this.convertToPLN.bind(this);
       
     }
     
     handleEurRateInput(inputValue) {
-      this.setState({currencyRate: inputValue}, () => {
-          console.log(this.state);
-      });
+      this.setState({currencyRate: inputValue});
+    }
+    
+    handleConvert(value) {
+      this.setState({ currencyAmount: value });
+    }
+    
+    convertToPLN() {
+      const {currencyRate, currencyAmount} = this.state;
+      
+      return currencyRate * currencyAmount;
     }
   
     render() {
-      // const currencyRate = this.state.currencyRate;
+      const convertedPlnAmout = this.convertToPLN();
       
         return(
           <div className="app-container">
-            <CurrencyTransaction onInputChange={ this.handleEurRateInput } />
+            <CurrencyTransaction 
+              onInputChange={ this.handleEurRateInput } 
+              onCurrencyConvert={ this.handleConvert }
+              convertedPlnAmout={ convertedPlnAmout }
+            />
             <TransactionList />
           </div>
         );

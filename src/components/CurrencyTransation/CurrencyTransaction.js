@@ -7,13 +7,21 @@ class CurrencyTransaction extends Component {
         super(props);
         
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleCurrencyConvert = this.handleCurrencyConvert.bind(this);
     }
     
     handleInputChange(e) {
-        this.props.onInputChange(e.target.value);
+        const inputValue = (e.target.value).replace(/,/g, '.')
+        this.props.onInputChange(parseFloat( inputValue ));
+    }
+    
+    handleCurrencyConvert(e) {
+        this.props.onCurrencyConvert(e.target.value);
     }
     
     render() {
+        const {convertedPlnAmout} = this.props;
+        
         return (
           <div>
           
@@ -31,13 +39,14 @@ class CurrencyTransaction extends Component {
                     <div className="exchange-box">
                         <div>
                             <label for="amount-eur">EUR</label>
-                            <input type="text" id="amount" />
-                        </div>
+                            <input type="text" id="amount-eur" onChange={ this.handleCurrencyConvert } />
+                        </div>  
                         <img src="img/euro.svg" alt="eur-icon" />
                         <div>
                             <label for="amount-pln">PLN</label>
-                            <input type="text" id="amount" />
+                            <input type="text" id="amount-pln" value={convertedPlnAmout} onChange={ this.handleCurrencyConvert } disabled />
                         </div>
+                        <button type="button" >Zapisz</button>
                     </div>
                </form>
            </div>
