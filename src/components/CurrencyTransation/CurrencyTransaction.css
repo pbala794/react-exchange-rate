@@ -51,7 +51,7 @@ h2 {
     border: none;
     border-bottom: 2px solid #457b9d;
     padding: 0 3px 5px;
-    /*width: 50px;*/
+    font-size: 1.1em;
 }
 
 .exchange-box {
@@ -69,17 +69,16 @@ h2 {
 .exchange-box label {
     height: 100%;
     margin-top: 0;
-    /*line-height: 50px;*/
     padding-right: 10px;
     position: absolute;
     pointer-events: none;
     left: 0;
-    top: -5px;
+    top: -10px;
 }
 
 .exchange-box input {
-    width: 50px;
-    font-size: 1.1em;
+    width: 100%;
+    max-width: 120px;
     line-height: 25px;
 }
 
@@ -113,6 +112,12 @@ h2 {
 
 .exchange-box button:hover {
     background: #f55536;
+}
+
+input:required,
+input:invalid {
+    outline: none;
+    border-color: #fff;
 }
 
 /* media queries */

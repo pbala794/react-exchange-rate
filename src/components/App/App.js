@@ -5,6 +5,7 @@ import TransactionList from '../TransactionList/TransactionList';
 
 import './App.css';
 
+
 class App extends Component {
     
     constructor(props) {
@@ -12,12 +13,16 @@ class App extends Component {
       
       this.state = {
         currencyRate: 0,
-        currencyAmount: 0
+        currencyAmount: 0,
+        convertedPlnAmout: 0,
+        transactionName: '',
+        transactions: []
       };
       this.handleEurRateInput = this.handleEurRateInput.bind(this);
       this.handleConvert = this.handleConvert.bind(this);
       this.convertToPLN = this.convertToPLN.bind(this);
-      
+      this.handleNameInput = this.handleNameInput.bind(this);
+      this.handleTranSave = this.handleTranSave.bind(this);
     }
     
     handleEurRateInput(inputValue) {
@@ -25,26 +30,46 @@ class App extends Component {
     }
     
     handleConvert(value) {
-      this.setState({ currencyAmount: value });
+      this.setState({currencyAmount: value}, this.convertToPLN);
     }
     
     convertToPLN() {
       const {currencyRate, currencyAmount} = this.state;
+      const convertedAmount = (currencyRate * currencyAmount) > 0 ? currencyRate * currencyAmount : '';
       
-      return currencyRate * currencyAmount;
+      this.setState({convertedPlnAmout: convertedAmount.toFixed(2)});
+    }
+    
+    handleNameInput(name) {
+      this.setState({transactionName: name});
+    }
+    
+    handleTranSave() {
+      this.setState({
+        transactions: [
+          ...this.state.transactions,
+          {
+            id: this.state.transactionName,
+            currencyAmount: this.state.currencyAmount,
+            convertedPlnAmout: this.state.convertedPlnAmout,
+            transactionName: this.state.transactionName
+          }
+        ]
+      });
     }
   
     render() {
-      const convertedPlnAmout = this.convertToPLN();
-      
+      const {convertedPlnAmout, transactions} = this.state;
         return(
           <div className="app-container">
             <CurrencyTransaction 
               onInputChange={ this.handleEurRateInput } 
               onCurrencyConvert={ this.handleConvert }
               convertedPlnAmout={ convertedPlnAmout }
+              onNameChange={ this.handleNameInput }
+              onTransactionSave={ this.handleTranSave }
             />
-            <TransactionList />
+            <TransactionList transactions={ transactions }/>
           </div>
         );
     }
