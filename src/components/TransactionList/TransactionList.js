@@ -17,12 +17,6 @@ class TransactionList extends Component {
             <span>Zakup samochodu: 75000</span>
           </div>
           <ul className="transaction-list">
-            <li>Transakcja 1</li>
-            <li>Transakcja 2</li>
-            <li>Transakcja 3</li>
-            <li>Transakcja 4</li>
-            <li>Transakcja 5</li>
-            <li>Transakcja 6</li>
             {
               transactions.map( transaction => {
                 transactionSumEur += Number(transaction.currencyAmount);
@@ -30,9 +24,10 @@ class TransactionList extends Component {
                 
                 return (
                   <li>
-                    <span>{transaction.transactionName}</span> | 
+                    {transaction.transactionName} 
                     {transaction.currencyAmount} | 
                     {transaction.convertedPlnAmout}
+                    <span>X</span>
                   </li>
                 )
               })

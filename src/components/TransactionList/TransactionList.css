@@ -9,6 +9,22 @@
     transition: background .2s ease-out;
 }
 
+.transaction-list span {
+    float: right;
+    clear: both;
+    padding: 0 10px;
+    color: #ef626c;
+    transition: color .3s ease-out;
+}
+
+.transaction-list li:hover span {
+    color: #fff;
+}
+
+.transaction-list li:not(:last-child) {
+    border-bottom: none;
+}
+
 .transaction-list li:hover {
     background: #457b9d;
     cursor: pointer;
