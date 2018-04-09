@@ -39,7 +39,9 @@ class CurrencyTransaction extends Component {
             <h2>Podaj kurs euro:</h2>
             <span className="eur-input">
                 <img src="img/euro.svg" alt="eur-icon" />
-                <input type="text" id="rate" placeholder="1 EUR = ... PLN" pattern="\d+(.\d)?" onChange={ this.handleInputChange } />
+                <input type="text" id="rate" placeholder="1 EUR = ... PLN" pattern="\d+(.\d)?" 
+                    onChange={ this.handleInputChange } 
+                />
             </span>
             
             <div className="transaction-content">
@@ -52,14 +54,16 @@ class CurrencyTransaction extends Component {
                         autocomplete="off" 
                     />
                     <div className="exchange-box">
-                        <div>
-                            <label for="amount-eur">EUR</label>
-                            <input type="text" id="amount-eur" defaultValue={0} onChange={ this.handleCurrencyConvert } />
-                        </div>  
-                        <img src="img/euro.svg" alt="eur-icon" />
-                        <div>
-                            <label for="amount-pln">PLN</label>
-                            <input type="text" id="amount-pln" value={convertedPlnAmout} onChange={ this.handleCurrencyConvert } disabled />
+                        <div className="exchange-box__currencies">
+                            <div>
+                                <label for="amount-eur">EUR</label>
+                                <input type="text" id="amount-eur" defaultValue={0} onChange={ this.handleCurrencyConvert } />
+                            </div>  
+                            <img src="img/euro.svg" alt="eur-icon" />
+                            <div>
+                                <label for="amount-pln">PLN</label>
+                                <input type="text" id="amount-pln" value={convertedPlnAmout} onChange={ this.handleCurrencyConvert } disabled />
+                            </div>
                         </div>
                         <button type="submit">Zapisz</button>
                     </div>

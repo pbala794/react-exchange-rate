@@ -14,7 +14,7 @@ class App extends Component {
       this.state = {
         currencyRate: 0,
         currencyAmount: 0,
-        convertedPlnAmout: 0,
+        convertedPlnAmout: 0.00,
         transactionName: '',
         transactions: []
       };
@@ -26,7 +26,7 @@ class App extends Component {
     }
     
     handleEurRateInput(inputValue) {
-      this.setState({currencyRate: inputValue});
+      this.setState({currencyRate: inputValue}, this.convertToPLN);
     }
     
     handleConvert(value) {
@@ -35,7 +35,7 @@ class App extends Component {
     
     convertToPLN() {
       const {currencyRate, currencyAmount} = this.state;
-      const convertedAmount = (currencyRate * currencyAmount) > 0 ? currencyRate * currencyAmount : '';
+      const convertedAmount = (currencyRate * currencyAmount) > 0 ? currencyRate * currencyAmount : 0;
       
       this.setState({convertedPlnAmout: convertedAmount.toFixed(2)});
     }

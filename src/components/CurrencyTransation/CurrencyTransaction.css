@@ -60,6 +60,10 @@ h2 {
     flex-wrap: wrap;
 }
 
+.exchange-box__currencies {
+    height: 50px;   
+}
+
 .exchange-box div {
     position: relative;
     display: flex;
@@ -97,7 +101,7 @@ h2 {
 
 .exchange-box button {
     width: 100px;
-    height: 100%;
+    height: 50px;
     margin-left: auto;
     outline: none;
     border-radius: none;
@@ -122,15 +126,7 @@ input:invalid {
 
 /* media queries */
 
-@media (max-width: 480px) {
-    .exchange-box button {
-        width: 100%;
-        height: 50px;
-        margin: 25px auto 0;
-    }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 575.98px) {
     .eur-input input {
         max-width: 150px;
         font-size: 0.9em;
@@ -138,5 +134,10 @@ input:invalid {
     
     .eur-input input::placeholder {
         letter-spacing: normal;
+    }
+    
+    .exchange-box button {
+        width: 100%;
+        margin: 25px auto 0;
     }
 }
