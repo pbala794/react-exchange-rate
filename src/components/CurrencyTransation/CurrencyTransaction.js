@@ -35,15 +35,17 @@ class CurrencyTransaction extends Component {
         
         return (
           <div>
-          
-            <h2>Podaj kurs euro:</h2>
-            <span className="eur-input">
-                <img src="img/euro.svg" alt="eur-icon" />
-                <input type="text" id="rate" placeholder="1 EUR = ... PLN" pattern="\d+(.\d)?" 
-                    onChange={ this.handleInputChange } 
-                />
-            </span>
-            
+            <h1 className="app-title"><span>Ex</span>Change Machine</h1>
+            <header className="top-header">
+                <p>Podaj kurs euro:</p>
+                <div className="eur-input">
+                    <img src="img/euro.svg" alt="eur-icon" />
+                    <input type="text" id="rate" placeholder="1 EUR = ... PLN" pattern="\d+(.\d)?" 
+                        onChange={ this.handleInputChange } 
+                    />
+                </div>
+            </header>
+
             <div className="transaction-content">
                <h3>Dodaj nową transakcję</h3>
                <form onSubmit={ this.handleTransactionSave }>

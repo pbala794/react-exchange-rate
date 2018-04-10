@@ -8,6 +8,7 @@ class TransactionList extends Component {
     super(props);
     
     this.calcMaxTransaction = this.calcMaxTransaction.bind(this);
+    this.handleDeleteItem = this.handleDeleteItem.bind(this);
   }
   
   calcMaxTransaction() {
@@ -18,6 +19,10 @@ class TransactionList extends Component {
     const maxValue = Math.max(...valueArr);
     
     return maxValue > 0 ? maxValue : '';
+  }
+  
+  handleDeleteItem(e) {
+    this.props.onDeleteItem(e.target.attributes);
   }
 
   render() {
@@ -43,7 +48,7 @@ class TransactionList extends Component {
                     {transaction.transactionName} 
                     {transaction.currencyAmount} | 
                     {transaction.convertedPlnAmout}
-                    <span>X</span>
+                    <span onClick={ this.handleDeleteItem } >X</span>
                   </li>
                 )
               })

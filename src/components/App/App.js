@@ -23,6 +23,7 @@ class App extends Component {
       this.convertToPLN = this.convertToPLN.bind(this);
       this.handleNameInput = this.handleNameInput.bind(this);
       this.handleTranSave = this.handleTranSave.bind(this);
+      this.handleDeleteItem = this.handleDeleteItem.bind(this);
     }
     
     handleEurRateInput(inputValue) {
@@ -57,6 +58,10 @@ class App extends Component {
         ]
       });
     }
+    
+    handleDeleteItem() {
+      
+    }
   
     render() {
       const {convertedPlnAmout, transactions} = this.state;
@@ -69,7 +74,10 @@ class App extends Component {
               onNameChange={ this.handleNameInput }
               onTransactionSave={ this.handleTranSave }
             />
-            <TransactionList transactions={ transactions }/>
+            <TransactionList 
+              transactions={ transactions }
+              onDeleteItem={ this.handleDeleteItem }
+            />
           </div>
         );
     }
