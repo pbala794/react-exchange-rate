@@ -46,21 +46,26 @@ class App extends Component {
     }
     
     handleTranSave() {
-      this.setState({
-        transactions: [
-          ...this.state.transactions,
-          {
-            id: this.state.transactionName,
-            currencyAmount: this.state.currencyAmount,
-            convertedPlnAmout: this.state.convertedPlnAmout,
-            transactionName: this.state.transactionName
-          }
-        ]
+      this.setState((prevState, props) => {
+        
+        return {
+          transactions: [
+            ...this.state.transactions,
+            {
+              id: 0,
+              currencyAmount: this.state.currencyAmount,
+              convertedPlnAmout: this.state.convertedPlnAmout,
+              transactionName: this.state.transactionName
+            }
+          ]
+        }
       });
     }
     
-    handleDeleteItem() {
+    handleDeleteItem(id) {
+      const transactions = this.state.transactions.filter((item, id) => item.id !== id);
       
+      this.setState({transactions});
     }
   
     render() {

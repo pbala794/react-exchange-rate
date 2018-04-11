@@ -22,7 +22,8 @@ class TransactionList extends Component {
   }
   
   handleDeleteItem(e) {
-    this.props.onDeleteItem(e.target.attributes);
+    const itemId = e.target.parentElement.getAttribute('name').split('-')[1];
+    this.props.onDeleteItem(itemId);
   }
 
   render() {
@@ -33,31 +34,36 @@ class TransactionList extends Component {
       return (
         <div>
           <h3>Historia Twoich transakcji</h3>
-          <div className="top-transaction-wrapper">
-            <p>Transakcja z najwyższą kwotą: </p>
-            <span>{ this.calcMaxTransaction() }</span>
-          </div>
-          <ul className="transaction-list">
-            {
-              transactions.map( transaction => {
-                transactionSumEur += Number(transaction.currencyAmount);
-                transactionSumPln += Number(transaction.convertedPlnAmout);
-                
-                return (
-                  <li key={ transaction.transactionName }>
-                    {transaction.transactionName} 
-                    {transaction.currencyAmount} | 
-                    {transaction.convertedPlnAmout}
-                    <span onClick={ this.handleDeleteItem } >X</span>
-                  </li>
-                )
-              })
-            }
-          </ul>
-          <span className="list-sum">
-            Suma transakcji: <br/>
-            {transactions.length > 0 ? ' EUR ' + transactionSumEur + ' PLN ' + transactionSumPln : ' 0'}
-          </span>
+          {transactions.length > 0 ? 
+            <div>
+              <div className="top-transaction-wrapper">
+                <p>Transakcja z najwyższą kwotą: </p>
+                <span>{ this.calcMaxTransaction() }</span>
+              </div>
+              <ul className="transaction-list">
+                {
+                  transactions.map( (transaction, index) => {
+                    transactionSumEur += Number(transaction.currencyAmount);
+                    transactionSumPln += Number(transaction.convertedPlnAmout);
+                    
+                    return (
+                      <li key={ index }
+                          name={`transaction-${index}`}>
+                        {transaction.transactionName} 
+                        {transaction.currencyAmount} | 
+                        {transaction.convertedPlnAmout}
+                        <span onClick={ this.handleDeleteItem } >X</span>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+              <span className="list-sum">
+                Suma transakcji: <br/>
+                {transactions.length > 0 ? ' EUR ' + transactionSumEur + ' PLN ' + transactionSumPln : ' 0'}
+              </span>
+            </div>
+          : <p>Brak historii</p> }
         </div>
               
       );

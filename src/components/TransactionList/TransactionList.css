@@ -1,13 +1,26 @@
 .transaction-list {
     margin: 50px 0 25px;
     list-style-type: none;
+    /*position: relative;*/
+    /*min-height: 50px;*/
 }
 
 .transaction-list li {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: -100vw;*/
+    width: 100%;
     padding: 10px 5px;
     border: 2px solid #457b9d;
     transition: background .2s ease-out;
+    /*animation: slideId .3s forwards;*/
 }
+
+/*@keyframes slideId {*/
+/*    100% {*/
+/*        left: 0;*/
+/*    }*/
+/*}*/
 
 .transaction-list span {
     float: right;
@@ -45,5 +58,5 @@
 }
 
 h3 {
-    margin-top: 35px;
+    margin: 35px 0 15px;
 }

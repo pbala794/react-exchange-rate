@@ -17,7 +17,7 @@ body {
     width: 90%;
     min-height: 90vh;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 25px auto;
     padding: 10px 15px 30px;
     display: flex;
     flex-direction: column;
