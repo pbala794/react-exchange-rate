@@ -53,11 +53,14 @@ class App extends Component {
             ...this.state.transactions,
             {
               id: 0,
-              currencyAmount: this.state.currencyAmount,
-              convertedPlnAmout: this.state.convertedPlnAmout,
-              transactionName: this.state.transactionName
+              currencyAmount: prevState.currencyAmount,
+              convertedPlnAmout: prevState.convertedPlnAmout,
+              transactionName: prevState.transactionName
             }
-          ]
+          ],
+          currencyAmount: 0,
+          convertedPlnAmout: 0,
+          transactionName: ''
         }
       });
     }

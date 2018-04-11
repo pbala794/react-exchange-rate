@@ -27,6 +27,7 @@
     clear: both;
     padding: 0 10px;
     color: #ef626c;
+    font-weight: bolder;
     transition: color .3s ease-out;
 }
 
