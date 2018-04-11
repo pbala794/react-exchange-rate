@@ -1,0 +1,22 @@
+.currency-rate-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.currency-dropdown select {
+    background: transparent;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+@media (max-width: 575.98px) {
+    
+    .currency-rate-wrapper {
+        flex-direction: column;
+    }
+    
+    .currency-dropdown select {
+        width: 100%;    
+    }
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './CurrencyTransaction.css';
 
+import CurrencyChooser from '../CurrencyChooser/CurrencyChooser';
+
 class CurrencyTransaction extends Component {
     
     constructor(props) {
@@ -37,15 +39,18 @@ class CurrencyTransaction extends Component {
           <div>
             <h1 className="app-title"><span>Ex</span>Change Machine</h1>
             <header className="top-header">
-                <p>Podaj kurs euro:</p>
-                <div className="eur-input">
-                    <img src="img/euro.svg" alt="eur-icon" />
-                    <input type="text" id="rate" placeholder="1 EUR = ... PLN" pattern="\d+(.\d)?" 
-                        onChange={ this.handleInputChange } 
-                    />
+                <p>Podaj kurs waluty lub pobierz aktualny:</p>
+                <div className="currency-rate-wrapper">
+                    <div className="eur-input">
+                        {/*<img src="img/euro.svg" alt="eur-icon" />*/}
+                        <input type="text" id="rate" placeholder="1 ... = ... PLN" pattern="\d+(.\d)?" 
+                            onChange={ this.handleInputChange } 
+                        />
+                    </div>
+                    <CurrencyChooser />
                 </div>
             </header>
-
+            
             <div className="transaction-content">
                <h3>Dodaj nową transakcję</h3>
                <form onSubmit={ this.handleTransactionSave }>

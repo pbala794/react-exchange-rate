@@ -58,9 +58,7 @@ class App extends Component {
               transactionName: prevState.transactionName
             }
           ],
-          currencyAmount: 0,
-          convertedPlnAmout: 0,
-          transactionName: ''
+          nextItemId: 0
         }
       });
     }

@@ -1,9 +1,3 @@
-.top-header {
-    background: #e8e8e8 ;
-    padding: 15px 15px 25px 15px;
-    border-radius: 6px;
-}
-
 .app-title {
     width: 185px;
     margin: 10px 0; 
@@ -32,6 +26,9 @@
 .top-header {
     margin-top: 40px;
     border: 2px solid #5f5555;
+    background: #e8e8e8 ;
+    padding: 15px 15px 25px 15px;
+    border-radius: 6px;
 }
 
 .top-header > p {
@@ -145,13 +142,14 @@
     background: #ef626c;
     color: #fefefe;
     letter-spacing: 1px;
-    font-size: 1.1em;
+    font-size: 1.3em;
     cursor: pointer;
-    transition: background .3s ease-out;
+    transition: all .3s linear;
 }
 
 .exchange-box button:hover {
-    background: #f55536;
+    background: #f13542;
+    font-size: 1em;
 }
 
 input:required,
@@ -169,8 +167,7 @@ input:focus {
     }
     
     .eur-input input {
-        max-width: 100px;
-        font-size: 0.8em;
+        max-width: 120px;
     }
     
     .eur-input input::placeholder {
