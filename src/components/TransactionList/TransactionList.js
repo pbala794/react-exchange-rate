@@ -8,7 +8,15 @@ class TransactionList extends Component {
     super(props);
     
     this.calcMaxTransaction = this.calcMaxTransaction.bind(this);
-    this.handleDeleteItem = this.handleDeleteItem.bind(this);
+    // this.handleDeleteItem = this.handleDeleteItem.bind(this);
+  }
+  
+  componentDidMount() {
+    console.log('component did mount');
+  }
+  
+  componentDidUpdate() {
+    console.log('component updated');
   }
   
   calcMaxTransaction() {
@@ -21,11 +29,6 @@ class TransactionList extends Component {
     return maxValue > 0 ? maxValue : '';
   }
   
-  handleDeleteItem(e) {
-    const itemId = e.target.parentElement.getAttribute('name').split('-')[1];
-    this.props.onDeleteItem(itemId);
-  }
-
   render() {
       const {transactions} = this.props; 
       let transactionSumEur = 0;
@@ -51,10 +54,10 @@ class TransactionList extends Component {
                           name={`transaction-${index}`}>
                         <span className="transaction-name">
                           {transaction.transactionName}
-                          <span className="delete-cross" onClick={ this.handleDeleteItem } >X</span>
+                          <span className="delete-cross" onClick={ () => this.props.onDeleteItem(transaction.transactionName) } >X</span>
                         </span>
                         <span>
-                          {transaction.currencyAmount} | {transaction.convertedPlnAmout}
+                          {transaction.currencyAmount} EUR | {transaction.convertedPlnAmout} PLN
                         </span>
                         <div className="arrow-down"></div>
                       </li>
@@ -62,6 +65,7 @@ class TransactionList extends Component {
                   })
                 }
               </ul>
+              <hr className="underline" />
               <span className="list-sum">
                 Suma transakcji: <br/>
                 {transactions.length > 0 ? ' EUR ' + transactionSumEur + ' PLN ' + transactionSumPln : ' 0'}

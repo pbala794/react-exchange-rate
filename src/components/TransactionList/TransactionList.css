@@ -18,12 +18,6 @@
     /*animation: slideId .3s forwards;*/
 }
 
-/*@keyframes slideId {*/
-/*    100% {*/
-/*        left: 0;*/
-/*    }*/
-/*}*/
-
 .transaction-list .delete-cross {
     float: right;
     clear: both;
@@ -56,6 +50,10 @@
 .transaction-list ~ span {
     color: #5f5555;
     font-size: 1.2em;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    line-height: 1.5em;
 }
 
 .top-transaction-wrapper {
@@ -68,4 +66,10 @@
 
 h3 {
     margin: 35px 0 15px;
+}
+
+.underline {
+    border-color: #ef626c;
+    color: #ef626c;
+    margin: 50px 0 10px;
 }

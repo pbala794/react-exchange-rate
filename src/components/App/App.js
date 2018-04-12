@@ -13,8 +13,8 @@ class App extends Component {
       
       this.state = {
         currencyRate: 0,
-        currencyAmount: 0,
-        convertedPlnAmout: 0.00,
+        currencyAmount: '',
+        convertedPlnAmout: 0,
         transactionName: '',
         transactions: []
       };
@@ -46,27 +46,34 @@ class App extends Component {
     }
     
     handleTranSave() {
-      this.setState((prevState, props) => {
+      if( this.state.currencyRate > 0 ) {
+        this.setState((prevState, props) => {
         
-        return {
-          transactions: [
-            ...this.state.transactions,
-            {
-              id: 0,
-              currencyAmount: prevState.currencyAmount,
-              convertedPlnAmout: prevState.convertedPlnAmout,
-              transactionName: prevState.transactionName
-            }
-          ],
-          nextItemId: 0
-        }
-      });
+          return {
+            currencyAmount: '',
+            convertedPlnAmout: 0,
+            transactionName: '',
+            transactions: [
+              ...this.state.transactions,
+              {
+                currencyAmount: prevState.currencyAmount,
+                convertedPlnAmout: prevState.convertedPlnAmout,
+                transactionName: prevState.transactionName
+              }
+            ]
+          }
+        });
+      } else {
+        alert('Podaj kurs do przeliczenia');
+      }
     }
     
-    handleDeleteItem(id) {
-      const transactions = this.state.transactions.filter((item, id) => item.id !== id);
-      
-      this.setState({transactions});
+    handleDeleteItem(name) {
+      this.setState(
+        (prevState) => ({
+          transactions: prevState.transactions.filter((item) => item.transactionName !== name)
+        })
+      );
     }
   
     render() {
@@ -79,6 +86,8 @@ class App extends Component {
               convertedPlnAmout={ convertedPlnAmout }
               onNameChange={ this.handleNameInput }
               onTransactionSave={ this.handleTranSave }
+              nameValue={ this.state.transactionName }
+              currencyValue={this.state.currencyAmount}
             />
             <TransactionList 
               transactions={ transactions }

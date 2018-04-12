@@ -26,7 +26,7 @@
 .top-header {
     margin-top: 40px;
     border: 2px solid #5f5555;
-    background: #e8e8e8 ;
+    background: #f3f3f4 ;
     padding: 15px 15px 25px 15px;
     border-radius: 6px;
 }
@@ -74,7 +74,7 @@
 }
 
 .transaction-content h3 {
-    background: #e8e8e8;
+    background: #f3f3f4;
     padding: 10px;
     border: 2px solid #5f5555;
     border-radius: 6px
@@ -144,15 +144,14 @@
     height: 50px;
     margin-left: auto;
     outline: none;
-    border-radius: none;
     border: 2px solid #5f5555;
+    border-radius: 6px;
     background: #ef626c;
     color: #fefefe;
     letter-spacing: 1px;
     font-size: 1.3em;
     cursor: pointer;
-    transition: all .3s linear;
-    border-radius: 6px
+    transition: all .3s ease-in-out;
 }
 
 .exchange-box button:hover {

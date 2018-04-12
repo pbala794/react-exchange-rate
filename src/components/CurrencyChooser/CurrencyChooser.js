@@ -17,14 +17,22 @@ class CurrencyChooser extends Component {
     }
 
     componentDidMount() {
-        fetch('http://data.fixer.io/api/latest?access_key=df01e715e67c6a9c5a63e42ddd7faba8&base=EUR&symbols=USD,PLN,GBP')
+        fetch('http://api.nbp.pl/api/exchangerates/tables/a')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                const selectedCurrencies = ['EUR', 'USD', 'GBP'];
+                const currencies = data[0].rates.filter(rate => { 
+                    return selectedCurrencies.includes(rate.code);
+                });
+                
+                const usdCurrencyValue = currencies.filter(currency => currency.code === 'USD')[0],
+                      eurCurrencyValue = currencies.filter(currency => currency.code === 'EUR')[0],
+                      gbpCurrencyValue = currencies.filter(currency => currency.code === 'GBP')[0];
+                
                 this.setState({
-                    USD: data.rates.USD,
-                    EUR: data.rates.PLN,
-                    GBP: data.rates.GBP,
+                    USD: usdCurrencyValue.mid,
+                    EUR: eurCurrencyValue.mid,
+                    GBP: gbpCurrencyValue.mid
                 })
             });
     }

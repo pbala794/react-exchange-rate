@@ -42,9 +42,8 @@ class CurrencyTransaction extends Component {
                 <p>Podaj kurs waluty lub pobierz aktualny:</p>
                 <div className="currency-rate-wrapper">
                     <div className="eur-input">
-                        {/*<img src="img/euro.svg" alt="eur-icon" />*/}
                         <input type="text" id="rate" placeholder="1 ... = ... PLN" pattern="\d+(.\d)?" 
-                            onChange={ this.handleInputChange } 
+                            onChange={ this.handleInputChange }
                         />
                     </div>
                     <CurrencyChooser />
@@ -54,21 +53,26 @@ class CurrencyTransaction extends Component {
             <div className="transaction-content">
                <h3>Dodaj nową transakcję</h3>
                <form onSubmit={ this.handleTransactionSave }>
-                    <label for="name">Nazwa transakcji</label>
+                    <label htmlFor="name">Nazwa transakcji</label>
                     <input type="text" id="name" 
                         onChange={ this.handleTransactionNameInput } 
+                        value={ this.props.nameValue }
                         required 
-                        autocomplete="off" 
+                        autoComplete="off"
                     />
                     <div className="exchange-box">
                         <div className="exchange-box__currencies">
                             <div>
-                                <label for="amount-eur">EUR</label>
-                                <input type="text" id="amount-eur" defaultValue={0} onChange={ this.handleCurrencyConvert } />
+                                <label htmlFor="amount-eur">EUR</label>
+                                <input type="text" id="amount-eur" 
+                                    value={ this.props.currencyValue } 
+                                    onChange={ this.handleCurrencyConvert }
+                                    required
+                                />
                             </div>  
                             <img src="img/euro.svg" alt="eur-icon" />
                             <div>
-                                <label for="amount-pln">PLN</label>
+                                <label htmlFor="amount-pln">PLN</label>
                                 <input type="text" id="amount-pln" value={convertedPlnAmout} onChange={ this.handleCurrencyConvert } disabled />
                             </div>
                         </div>
