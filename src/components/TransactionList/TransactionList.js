@@ -68,7 +68,7 @@ class TransactionList extends Component {
               <hr className="underline" />
               <span className="list-sum">
                 Suma transakcji: <br/>
-                {transactions.length > 0 ? ' EUR ' + transactionSumEur + ' PLN ' + transactionSumPln : ' 0'}
+                {transactions.length > 0 ? ' EUR ' + transactionSumEur.toFixed(2) + ' PLN ' + transactionSumPln.toFixed(2) : ' 0'}
               </span>
             </div>
           : <p>Brak historii</p> }

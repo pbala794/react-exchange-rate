@@ -67,6 +67,7 @@ class CurrencyTransaction extends Component {
                                 <input type="text" id="amount-eur" 
                                     value={ this.props.currencyValue } 
                                     onChange={ this.handleCurrencyConvert }
+                                    autoComplete="off"
                                     required
                                 />
                             </div>  
