@@ -73,6 +73,13 @@
     margin-top: 40px;
 }
 
+.transaction-content h3 {
+    background: #e8e8e8;
+    padding: 10px;
+    border: 2px solid #5f5555;
+    border-radius: 6px
+}
+
 .transaction-content form {
     margin-top: 20px;
     display: flex;
@@ -87,7 +94,7 @@
 .transaction-content input {
     border: none;
     border-bottom: 2px solid #457b9d;
-    padding: 5px 3px;
+    padding: 10px 3px;
     font-size: 1.1em;
 }
 
@@ -138,13 +145,14 @@
     margin-left: auto;
     outline: none;
     border-radius: none;
-    border: none;
+    border: 2px solid #5f5555;
     background: #ef626c;
     color: #fefefe;
     letter-spacing: 1px;
     font-size: 1.3em;
     cursor: pointer;
     transition: all .3s linear;
+    border-radius: 6px
 }
 
 .exchange-box button:hover {

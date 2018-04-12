@@ -13,6 +13,8 @@
     padding: 10px 5px;
     border: 2px solid #457b9d;
     transition: background .2s ease-out;
+    display: flex;
+    flex-direction: column;
     /*animation: slideId .3s forwards;*/
 }
 
@@ -22,7 +24,7 @@
 /*    }*/
 /*}*/
 
-.transaction-list span {
+.transaction-list .delete-cross {
     float: right;
     clear: both;
     padding: 0 10px;
@@ -31,7 +33,13 @@
     transition: color .3s ease-out;
 }
 
-.transaction-list li:hover span {
+.transaction-name {
+    font-weight: bolder;
+    padding: 0 0 10px;
+    text-transform: uppercase;
+}
+
+.transaction-list li:hover .delete-cross {
     color: #fff;
 }
 

@@ -49,10 +49,14 @@ class TransactionList extends Component {
                     return (
                       <li key={ index }
                           name={`transaction-${index}`}>
-                        {transaction.transactionName} 
-                        {transaction.currencyAmount} | 
-                        {transaction.convertedPlnAmout}
-                        <span onClick={ this.handleDeleteItem } >X</span>
+                        <span className="transaction-name">
+                          {transaction.transactionName}
+                          <span className="delete-cross" onClick={ this.handleDeleteItem } >X</span>
+                        </span>
+                        <span>
+                          {transaction.currencyAmount} | {transaction.convertedPlnAmout}
+                        </span>
+                        <div className="arrow-down"></div>
                       </li>
                     )
                   })
