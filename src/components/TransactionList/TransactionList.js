@@ -11,14 +11,6 @@ class TransactionList extends Component {
     // this.handleDeleteItem = this.handleDeleteItem.bind(this);
   }
   
-  componentDidMount() {
-    console.log('component did mount');
-  }
-  
-  componentDidUpdate() {
-    console.log('component updated');
-  }
-  
   calcMaxTransaction() {
     const {transactions} = this.props;
     const valueArr = transactions.map((value) => (

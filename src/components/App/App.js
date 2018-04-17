@@ -24,6 +24,7 @@ class App extends Component {
       this.handleNameInput = this.handleNameInput.bind(this);
       this.handleTranSave = this.handleTranSave.bind(this);
       this.handleDeleteItem = this.handleDeleteItem.bind(this);
+      this.handleSelectChange = this.handleSelectChange.bind(this);
     }
     
     handleEurRateInput(inputValue) {
@@ -75,19 +76,25 @@ class App extends Component {
         })
       );
     }
+    
+    handleSelectChange(currency) {
+      this.setState({currencyRate: currency}, this.convertToPLN);
+    }
   
     render() {
       const {convertedPlnAmout, transactions} = this.state;
         return(
           <div className="app-container">
             <CurrencyTransaction 
-              onInputChange={ this.handleEurRateInput } 
+              onInputChange={ this.handleEurRateInput }
+              currencyRateValue={ this.state.currencyRate }
               onCurrencyConvert={ this.handleConvert }
               convertedPlnAmout={ convertedPlnAmout }
               onNameChange={ this.handleNameInput }
               onTransactionSave={ this.handleTranSave }
               nameValue={ this.state.transactionName }
               currencyValue={this.state.currencyAmount}
+              onSelectChange={this.handleSelectChange}
             />
             <TransactionList 
               transactions={ transactions }

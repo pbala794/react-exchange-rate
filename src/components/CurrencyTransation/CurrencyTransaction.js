@@ -43,10 +43,11 @@ class CurrencyTransaction extends Component {
                 <div className="currency-rate-wrapper">
                     <div className="eur-input">
                         <input type="text" id="rate" placeholder="1 ... = ... PLN" pattern="\d+(.\d)?" 
+                            value={ this.props.currencyRateValue }
                             onChange={ this.handleInputChange }
                         />
                     </div>
-                    <CurrencyChooser />
+                    <CurrencyChooser onSelectChange={(currency) => this.props.onSelectChange(currency)}/>
                 </div>
             </header>
             

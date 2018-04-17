@@ -8,14 +8,11 @@ class CurrencyChooser extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-            USD: 0,
-            EUR: 0,
-            GBP: 0
-        }
-        this.handleOptionChange = this.handleOptionChange.bind(this);
+        this.fetchedCurrencies = {};
+        
+        this.onSelectChange = this.onSelectChange.bind(this);
     }
-
+    
     componentDidMount() {
         fetch('http://api.nbp.pl/api/exchangerates/tables/a')
             .then(res => res.json())
@@ -25,26 +22,46 @@ class CurrencyChooser extends Component {
                     return selectedCurrencies.includes(rate.code);
                 });
                 
-                const usdCurrencyValue = currencies.filter(currency => currency.code === 'USD')[0],
-                      eurCurrencyValue = currencies.filter(currency => currency.code === 'EUR')[0],
-                      gbpCurrencyValue = currencies.filter(currency => currency.code === 'GBP')[0];
+                const usdCurrencyValue = currencies.filter(currency => currency.code === 'USD')[0].mid,
+                      eurCurrencyValue = currencies.filter(currency => currency.code === 'EUR')[0].mid,
+                      gbpCurrencyValue = currencies.filter(currency => currency.code === 'GBP')[0].mid;
                 
-                this.setState({
-                    USD: usdCurrencyValue.mid,
-                    EUR: eurCurrencyValue.mid,
-                    GBP: gbpCurrencyValue.mid
-                })
+                this.fetchedCurrencies = {
+                  usd: usdCurrencyValue,
+                  eur: eurCurrencyValue,
+                  gbp: gbpCurrencyValue
+                };
             });
     }
     
-    handleOptionChange(e) {
+    onSelectChange() {
+        const selectList = document.getElementById('currency-options');
         
+        if(Object.keys(this.fetchedCurrencies).length !== 0) {
+            switch (selectList.selectedIndex) {
+                case 1:
+                    this.props.onSelectChange(this.fetchedCurrencies.usd)
+                    break;
+                
+                case 2:
+                    this.props.onSelectChange(this.fetchedCurrencies.eur)
+                    break;
+                    
+                case 3:
+                    this.props.onSelectChange(this.fetchedCurrencies.gbp)
+                    break;
+                
+                default:
+                    break;
+            }
+        }
     }
     
     render() {
         return (
             <div className="currency-dropdown">
-                <select name="currency-options" onChange={this.handleOptionChange}>
+                <select id="currency-options" onChange={ this.onSelectChange }>
+                    <option>Wybierz</option>
                     <option>USD</option>
                     <option>EUR</option>
                     <option>GBP</option>
