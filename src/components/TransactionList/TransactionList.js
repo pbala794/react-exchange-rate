@@ -23,7 +23,6 @@ class TransactionList extends Component {
   
   render() {
       const {transactions} = this.props; 
-      let transactionSumEur = 0;
       let transactionSumPln = 0;
       
       return (
@@ -35,10 +34,14 @@ class TransactionList extends Component {
                 <p>Transakcja z najwyższą kwotą: </p>
                 <span>{ this.calcMaxTransaction() }</span>
               </div>
+              <button type="button" 
+                className="clear-btn" 
+                onClick={() => this.props.onClearList()}>
+                Wyczyść listę
+              </button>
               <ul className="transaction-list">
                 {
                   transactions.map( (transaction, index) => {
-                    transactionSumEur += Number(transaction.currencyAmount);
                     transactionSumPln += Number(transaction.convertedPlnAmout);
                     
                     return (
@@ -49,7 +52,7 @@ class TransactionList extends Component {
                           <span className="delete-cross" onClick={ () => this.props.onDeleteItem(transaction.transactionName) } >X</span>
                         </span>
                         <span>
-                          {transaction.currencyAmount} EUR | {transaction.convertedPlnAmout} PLN
+                          {transaction.currencyAmount} {this.props.currencyCode} | {transaction.convertedPlnAmout} PLN
                         </span>
                         <div className="arrow-down"></div>
                       </li>
@@ -59,8 +62,8 @@ class TransactionList extends Component {
               </ul>
               <hr className="underline" />
               <span className="list-sum">
-                Suma transakcji: <br/>
-                {transactions.length > 0 ? ' EUR ' + transactionSumEur.toFixed(2) + ' PLN ' + transactionSumPln.toFixed(2) : ' 0'}
+                Suma wydatków: <br/>
+                {transactions.length > 0 ? ' PLN ' + transactionSumPln.toFixed(2) : ' 0'}
               </span>
             </div>
           : <p>Brak historii</p> }

@@ -39,12 +39,13 @@ class CurrencyTransaction extends Component {
           <div>
             <h1 className="app-title"><span>Ex</span>Change Machine</h1>
             <header className="top-header">
-                <p>Podaj kurs waluty lub pobierz aktualny:</p>
+                <p>Pobierz aktualne kursy walut do złotego:</p>
                 <div className="currency-rate-wrapper">
                     <div className="eur-input">
                         <input type="text" id="rate" placeholder="1 ... = ... PLN" pattern="\d+(.\d)?" 
                             value={ this.props.currencyRateValue }
                             onChange={ this.handleInputChange }
+                            disabled
                         />
                     </div>
                     <CurrencyChooser onSelectChange={(currency) => this.props.onSelectChange(currency)}/>
@@ -64,7 +65,7 @@ class CurrencyTransaction extends Component {
                     <div className="exchange-box">
                         <div className="exchange-box__currencies">
                             <div>
-                                <label htmlFor="amount-eur">EUR</label>
+                                <label htmlFor="amount-eur">{ this.props.currencyCode }</label>
                                 <input type="text" id="amount-eur" 
                                     value={ this.props.currencyValue } 
                                     onChange={ this.handleCurrencyConvert }

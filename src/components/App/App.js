@@ -13,8 +13,9 @@ class App extends Component {
       
       this.state = {
         currencyRate: 0,
+        currencyCode: 'Waluta',
         currencyAmount: '',
-        convertedPlnAmout: 0,
+        convertedPlnAmout: '0.00',
         transactionName: '',
         transactions: []
       };
@@ -25,6 +26,7 @@ class App extends Component {
       this.handleTranSave = this.handleTranSave.bind(this);
       this.handleDeleteItem = this.handleDeleteItem.bind(this);
       this.handleSelectChange = this.handleSelectChange.bind(this);
+      this.handleClearList = this.handleClearList.bind(this);
     }
     
     handleEurRateInput(inputValue) {
@@ -78,7 +80,14 @@ class App extends Component {
     }
     
     handleSelectChange(currency) {
-      this.setState({currencyRate: currency}, this.convertToPLN);
+      this.setState({
+        currencyRate: currency.mid,
+        currencyCode: currency.code
+      }, this.convertToPLN);
+    }
+    
+    handleClearList() {
+      this.setState({transactions: []});
     }
   
     render() {
@@ -93,12 +102,15 @@ class App extends Component {
               onNameChange={ this.handleNameInput }
               onTransactionSave={ this.handleTranSave }
               nameValue={ this.state.transactionName }
-              currencyValue={this.state.currencyAmount}
-              onSelectChange={this.handleSelectChange}
+              currencyValue={ this.state.currencyAmount }
+              currencyCode={ this.state.currencyCode }
+              onSelectChange={ this.handleSelectChange }
             />
             <TransactionList 
               transactions={ transactions }
               onDeleteItem={ this.handleDeleteItem }
+              onClearList={ this.handleClearList }
+              currencyCode={ this.state.currencyCode }
             />
           </div>
         );

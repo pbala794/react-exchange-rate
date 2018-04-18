@@ -1,21 +1,32 @@
+.clear-btn {
+    height: 40px;
+    padding: 5px;
+    margin-left: auto;
+    outline: none;
+    border: 2px solid #5f5555;
+    background: #ef626c;
+    color: #fefefe;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.clear-btn:hover {
+    background: #f13542;
+}
+
 .transaction-list {
-    margin: 50px 0 25px;
+    margin: 25px 0;
     list-style-type: none;
-    /*position: relative;*/
-    /*min-height: 50px;*/
 }
 
 .transaction-list li {
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: -100vw;*/
     width: 100%;
     padding: 10px 5px;
     border: 2px solid #457b9d;
     transition: background .2s ease-out;
     display: flex;
     flex-direction: column;
-    /*animation: slideId .3s forwards;*/
 }
 
 .transaction-list .delete-cross {

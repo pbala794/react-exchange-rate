@@ -22,14 +22,14 @@ class CurrencyChooser extends Component {
                     return selectedCurrencies.includes(rate.code);
                 });
                 
-                const usdCurrencyValue = currencies.filter(currency => currency.code === 'USD')[0].mid,
-                      eurCurrencyValue = currencies.filter(currency => currency.code === 'EUR')[0].mid,
-                      gbpCurrencyValue = currencies.filter(currency => currency.code === 'GBP')[0].mid;
+                const usdCurrency = currencies.filter(currency => currency.code === 'USD')[0],
+                      eurCurrency = currencies.filter(currency => currency.code === 'EUR')[0],
+                      gbpCurrency = currencies.filter(currency => currency.code === 'GBP')[0];
                 
                 this.fetchedCurrencies = {
-                  usd: usdCurrencyValue,
-                  eur: eurCurrencyValue,
-                  gbp: gbpCurrencyValue
+                  usd: usdCurrency,
+                  eur: eurCurrency,
+                  gbp: gbpCurrency
                 };
             });
     }
